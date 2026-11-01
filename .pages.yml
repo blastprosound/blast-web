@@ -1,0 +1,241 @@
+# ============================================================================
+# BLAST — configuración del panel de edición (Pages CMS)
+# Define qué puede editarse desde app.pagescms.org
+# ============================================================================
+
+media:
+  input: img
+  output: /img
+  categories: [image]
+
+content:
+  # --------------------------------------------------------------------------
+  - name: portada
+    label: Portada
+    type: file
+    path: data/portada.json
+    format: json
+    fields:
+      - name: titulo
+        label: Titular
+        type: text
+        description: "Usa <br> para partir la línea. Ejemplo: Lo dibujamos.<br>Luego existe."
+      - name: boceto
+        label: Foto del boceto (izquierda)
+        type: image
+        description: Tiene que ser la MISMA escena que la foto del montaje.
+      - name: montaje
+        label: Foto del montaje (derecha)
+        type: image
+        description: La misma escena del boceto, ya construida.
+      - name: rotuloIzquierda
+        label: Etiqueta sobre el boceto
+        type: string
+      - name: rotuloDerecha
+        label: Etiqueta sobre el montaje
+        type: string
+      - name: preguntaModo
+        label: 'Texto antes de los botones (ej: "Estoy planeando")'
+        type: string
+      - name: botonVerTrabajo
+        label: Botón secundario
+        type: string
+      - name: modos
+        label: Textos según el tipo de evento
+        type: object
+        fields:
+          - name: fiesta
+            label: Una fiesta
+            type: object
+            fields:
+              - { name: texto, label: Texto, type: text }
+              - { name: boton, label: Botón, type: string }
+          - name: boda
+            label: Una boda
+            type: object
+            fields:
+              - { name: texto, label: Texto, type: text }
+              - { name: boton, label: Botón, type: string }
+          - name: corporativo
+            label: Un evento de marca
+            type: object
+            fields:
+              - { name: texto, label: Texto, type: text }
+              - { name: boton, label: Botón, type: string }
+
+  # --------------------------------------------------------------------------
+  - name: servicios
+    label: Qué montamos
+    type: file
+    path: data/servicios.json
+    format: json
+    fields:
+      - { name: titulo, label: Título, type: text, description: "Usa <br> para partir la línea." }
+      - { name: texto, label: Texto de entrada, type: text }
+      - name: grupos
+        label: Grupos de servicios
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{nombre}"
+        fields:
+          - { name: nombre, label: Nombre del grupo, type: string }
+          - name: color
+            label: Color del punto
+            type: string
+            description: "Escribe exactamente una de estas cuatro: sonido (azul), luz (magenta), estructura (ámbar), diseno (blanco)."
+          - { name: items, label: Servicios de este grupo, type: string, list: true }
+
+  # --------------------------------------------------------------------------
+  - name: plano
+    label: El plano
+    type: file
+    path: data/plano.json
+    format: json
+    fields:
+      - { name: titulo, label: Título, type: text, description: "Usa <br> para partir la línea." }
+      - { name: texto, label: Texto de entrada, type: text }
+      - { name: dibujo, label: Dibujo del plano, type: image }
+      - { name: pista, label: Texto de ayuda sobre el plano, type: string }
+      - name: piezas
+        label: Puntos del plano
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{nombre}"
+        fields:
+          - { name: nombre, label: Nombre, type: string }
+          - { name: detalle, label: Detalle, type: string }
+          - name: x
+            label: Posición horizontal (0 a 100)
+            type: number
+            description: 0 es el borde izquierdo, 100 el derecho.
+          - name: y
+            label: Posición vertical (0 a 100)
+            type: number
+            description: 0 es arriba, 100 es abajo.
+      - name: sonido
+        label: Equipos de sonido
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{nombre}"
+        fields:
+          - { name: nombre, label: Modelo, type: string }
+          - { name: detalle, label: Para qué sirve, type: string }
+      - { name: tituloLuces, label: 'Título de las luces', type: string }
+      - { name: luces, label: Luces, type: string, list: true }
+      - { name: foto, label: Foto al lado de los equipos, type: image }
+
+  # --------------------------------------------------------------------------
+  - name: trabajos
+    label: Trabajos
+    type: file
+    path: data/trabajos.json
+    format: json
+    fields:
+      - { name: titulo, label: Título, type: text, description: "Usa <br> para partir la línea." }
+      - { name: texto, label: Texto de entrada, type: text }
+      - name: fotos
+        label: Fotos del portafolio
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{titulo}"
+        fields:
+          - { name: foto, label: Foto, type: image }
+          - { name: titulo, label: Nombre del evento, type: string }
+          - name: descripcion
+            label: Descripción
+            type: string
+            description: No se ve en pantalla. La leen Google y los lectores para personas ciegas.
+          - name: destacada
+            label: Mostrar en grande
+            type: boolean
+            description: Marca SOLO una foto. Si marcas varias, la cuadrícula se descuadra.
+
+  # --------------------------------------------------------------------------
+  - name: clientes
+    label: Clientes
+    type: file
+    path: data/clientes.json
+    format: json
+    fields:
+      - { name: titulo, label: Título, type: string }
+      - { name: marcas, label: Marcas, type: string, list: true }
+      - { name: tituloColegios, label: 'Título de la segunda lista', type: string }
+      - { name: colegios, label: Colegios y universidades, type: string, list: true }
+
+  # --------------------------------------------------------------------------
+  - name: nosotros
+    label: Nosotros
+    type: file
+    path: data/nosotros.json
+    format: json
+    fields:
+      - { name: titulo, label: Título, type: text, description: "Usa <br> para partir la línea." }
+      - { name: parrafos, label: Párrafos, type: text, list: true }
+      - name: cifras
+        label: Cifras
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{numero} — {etiqueta}"
+        fields:
+          - { name: numero, label: Número, type: string }
+          - { name: etiqueta, label: Qué significa, type: string }
+
+  # --------------------------------------------------------------------------
+  - name: contacto
+    label: Contacto
+    type: file
+    path: data/contacto.json
+    format: json
+    fields:
+      - name: whatsapp
+        label: WhatsApp (solo números)
+        type: string
+        description: "Código de país + número, sin +, sin espacios y sin guiones. Ejemplo: 584122348595"
+      - { name: whatsappVisible, label: WhatsApp como se muestra, type: string }
+      - { name: correo, label: Correo, type: string }
+      - name: instagram
+        label: Instagram
+        type: string
+        description: Solo el usuario, sin la arroba.
+      - { name: ciudad, label: Ciudad, type: string }
+      - name: formulario
+        label: Textos del formulario de presupuesto
+        type: object
+        fields:
+          - { name: titulo, label: Título, type: text, description: "Usa <br> para partir la línea." }
+          - { name: texto, label: Texto de entrada, type: text }
+          - { name: boton, label: Botón de enviar, type: string }
+          - name: nota
+            label: Nota bajo el botón
+            type: text
+            description: "Los tipos de evento del formulario NO se editan aquí: los fija el sistema interno."
+
+  # --------------------------------------------------------------------------
+  - name: sitio
+    label: Ajustes del sitio
+    type: file
+    path: data/sitio.json
+    format: json
+    fields:
+      - { name: logo, label: Logo del pie de página, type: image }
+      - { name: descripcion, label: Texto del pie de página, type: text }
+      - { name: derechos, label: Nombre en el aviso de derechos, type: string }
+      - name: seo
+        label: Lo que muestra Google y WhatsApp
+        type: object
+        fields:
+          - { name: titulo, label: Título del sitio, type: string }
+          - name: descripcion
+            label: Descripción
+            type: text
+            description: Entre 120 y 160 caracteres es lo ideal.
