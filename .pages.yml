@@ -230,6 +230,26 @@ content:
       - { name: logo, label: Logo del pie de página, type: image }
       - { name: descripcion, label: Texto del pie de página, type: text }
       - { name: derechos, label: Nombre en el aviso de derechos, type: string }
+      - name: secciones
+        label: Secciones de la página
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{id}"
+        fields:
+          - name: id
+            label: Cuál sección
+            type: string
+            description: "Escribe exactamente una de estas: servicios, plano, trabajos, clientes, nosotros, presupuesto"
+          - name: menu
+            label: Nombre en el menú
+            type: string
+            description: Es también el rótulo gris al lado del título. Déjalo vacío para que no salga en el menú de arriba.
+          - name: mostrar
+            label: Mostrar en la página
+            type: boolean
+            description: Apágalo para esconder la sección sin borrarla. Si borras la fila entera, también desaparece.  
       - name: seo
         label: Lo que muestra Google y WhatsApp
         type: object
