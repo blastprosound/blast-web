@@ -1,0 +1,23 @@
+{
+  "boceto": "img/proceso-1-boceto.jpg",
+  "montaje": "img/proceso-2-render.jpg",
+  "rotuloIzquierda": "Boceto",
+  "rotuloDerecha": "Montado",
+  "titulo": "Lo dibujamos.<br>Luego existe.",
+  "modos": {
+    "fiesta": {
+      "texto": "Bocetamos tu fiesta, la llevamos a render y la montamos igual. Equipo propio, en Caracas.",
+      "boton": "Pide tu presupuesto"
+    },
+    "boda": {
+      "texto": "Dibujamos tu boda antes de montarla. Apruebas viendo exactamente lo que vas a recibir.",
+      "boton": "Pide tu presupuesto"
+    },
+    "corporativo": {
+      "texto": "Del boceto al montaje, con render 3D de por medio. Tu marca aprueba antes de que exista.",
+      "boton": "Pide tu presupuesto"
+    }
+  },
+  "preguntaModo": "Estoy planeando",
+  "botonVerTrabajo": "Ver trabajos"
+}

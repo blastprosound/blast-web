@@ -1,0 +1,21 @@
+{
+  "titulo": "Quiénes somos",
+  "parrafos": [
+    "Blast nació en junio de 2023 en Caracas con una idea simple: que la técnica nunca se note, pero siempre se sienta.",
+    "Montamos con equipo propio y personal técnico. Eso nos deja responder rápido y responder por lo que entregamos."
+  ],
+  "cifras": [
+    {
+      "numero": "2023",
+      "etiqueta": "Desde"
+    },
+    {
+      "numero": "+100",
+      "etiqueta": "Eventos"
+    },
+    {
+      "numero": "100%",
+      "etiqueta": "Equipo propio"
+    }
+  ]
+}

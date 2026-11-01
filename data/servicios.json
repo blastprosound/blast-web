@@ -1,0 +1,42 @@
+{
+  "titulo": "Qué montamos",
+  "texto": "Cubrimos el evento completo. Puedes contratar todo o solo la parte que te falta.",
+  "grupos": [
+    {
+      "nombre": "Sonido",
+      "color": "sonido",
+      "items": [
+        "Sistema de sonido",
+        "Microfonía",
+        "Operación en vivo"
+      ]
+    },
+    {
+      "nombre": "Luz",
+      "color": "luz",
+      "items": [
+        "Iluminación de escenario",
+        "Ambientación",
+        "Visuales"
+      ]
+    },
+    {
+      "nombre": "Estructura",
+      "color": "estructura",
+      "items": [
+        "Tarimas",
+        "Pantallas LED",
+        "Estructura truss"
+      ]
+    },
+    {
+      "nombre": "Diseño",
+      "color": "diseno",
+      "items": [
+        "Conceptualización",
+        "Render 3D",
+        "Planos de montaje"
+      ]
+    }
+  ]
+}

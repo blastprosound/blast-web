@@ -1,0 +1,32 @@
+{
+  "titulo": "Trabajos",
+  "texto": "Bodas, fiestas y activaciones de marca donde estuvimos detrás del sonido y la luz.",
+  "fotos": [
+    {
+      "foto": "img/portafolio-1-fake-wedding.jpg",
+      "titulo": "The Fake Wedding",
+      "descripcion": "Montaje de escenario con pantallas LED",
+      "destacada": true
+    },
+    {
+      "foto": "img/portafolio-2-matrimonio.jpg",
+      "titulo": "Matrimonio",
+      "descripcion": "Iluminación ambiental en celebración nocturna"
+    },
+    {
+      "foto": "img/portafolio-3-dj-set.jpg",
+      "titulo": "DJ set",
+      "descripcion": "Pantallas LED y luces beam"
+    },
+    {
+      "foto": "img/portafolio-4-marca.jpg",
+      "titulo": "Graduación",
+      "descripcion": "Sonido y tarima para acto de graduación"
+    },
+    {
+      "foto": "img/portafolio-5-render.jpg",
+      "titulo": "Render",
+      "descripcion": "Propuesta de escenario en 3D"
+    }
+  ]
+}

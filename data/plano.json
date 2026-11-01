@@ -1,0 +1,66 @@
+{
+  "titulo": "Cada pieza,<br>en su sitio",
+  "texto": "Antes de montar hacemos el plano. Toca los puntos para ver qué va en cada lugar.",
+  "dibujo": "img/plano.jpg",
+  "pista": "Toca los puntos",
+  "piezas": [
+    {
+      "x": 50,
+      "y": 30,
+      "nombre": "Truss y pantalla",
+      "detalle": "Estructura y LED sobre tarima"
+    },
+    {
+      "x": 22.5,
+      "y": 36,
+      "nombre": "Line array",
+      "detalle": "JBL VRX colgado por lado"
+    },
+    {
+      "x": 77,
+      "y": 36,
+      "nombre": "Line array",
+      "detalle": "JBL VRX colgado por lado"
+    },
+    {
+      "x": 36,
+      "y": 22,
+      "nombre": "Cabezales",
+      "detalle": "Beam 275W sobre truss frontal"
+    },
+    {
+      "x": 64,
+      "y": 22,
+      "nombre": "Wash",
+      "detalle": "Ambientación de sala"
+    },
+    {
+      "x": 50,
+      "y": 50,
+      "nombre": "Cabina",
+      "detalle": "Consola y operación en vivo"
+    }
+  ],
+  "sonido": [
+    {
+      "nombre": "JBL SRX",
+      "detalle": "Gran formato"
+    },
+    {
+      "nombre": "JBL VRX",
+      "detalle": "Line array versátil"
+    },
+    {
+      "nombre": "JBL PRX",
+      "detalle": "Portátil de alta potencia"
+    }
+  ],
+  "tituloLuces": "Luces",
+  "luces": [
+    "Beam 275W",
+    "Retro",
+    "Wash",
+    "Par Led"
+  ],
+  "foto": "img/equipos.jpg"
+}
