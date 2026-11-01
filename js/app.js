@@ -19,8 +19,24 @@
     if (html != null) n.innerHTML = html;
     return n;
   };
-  var texto = function(id, valor){ var n = $(id); if (n && valor != null) n.textContent = valor; };
-  var html  = function(id, valor){ var n = $(id); if (n && valor != null) n.innerHTML = valor; };
+  var vacio = function(v){ return v == null || String(v).trim() === ''; };
+  // Si borras un texto desde el panel, el elemento se oculta en vez de
+  // dejar un hueco en la pagina.
+  var texto = function(id, valor){
+    var n = $(id); if (!n) return;
+    if (vacio(valor)) { n.hidden = true; return; }
+    n.hidden = false; n.textContent = valor;
+  };
+  var html = function(id, valor){
+    var n = $(id); if (!n) return;
+    if (vacio(valor)) { n.hidden = true; return; }
+    n.hidden = false; n.innerHTML = valor;
+  };
+  // oculta el contenedor si la lista quedó sin elementos
+  var ocultarSiVacio = function(nodo, lista){
+    if (!nodo) return;
+    nodo.hidden = !(lista && lista.length);
+  };
 
   /* ---- Carga del contenido ---- */
   var ARCHIVOS = ['portada','servicios','plano','trabajos','clientes','nosotros','contacto','sitio'];
@@ -65,6 +81,44 @@
   });
 
   function arrancar(C){
+
+  /* ---- Secciones: orden, visibilidad y menú ----
+     Se controlan desde el panel, en "Ajustes del sitio".
+     Si la lista está vacía, la página se queda como viene de fábrica. */
+  (function(){
+    var lista = (C.pie && C.pie.secciones) || [];
+    var main = $('principal'), menu = $('menu');
+    if (!lista.length || !main || !menu) return;
+
+    var vistas = {};
+    lista.forEach(function(s){ if (s && s.id) vistas[s.id] = s; });
+
+    // fuera del menú todo lo anterior: se reconstruye desde la lista
+    Array.prototype.slice.call(menu.querySelectorAll('a')).forEach(function(x){ x.remove(); });
+
+    lista.forEach(function(s){
+      var sec = s && s.id ? $(s.id) : null;
+      if (!sec) return;
+
+      if (s.mostrar === false) { sec.hidden = true; return; }
+      sec.hidden = false;
+      main.appendChild(sec);              // el orden de la lista manda
+
+      if (!vacio(s.menu)) {
+        var marcaLateral = sec.querySelector('.bloque__marca');
+        if (marcaLateral) marcaLateral.textContent = s.menu;
+        var a = document.createElement('a');
+        a.href = '#' + s.id;
+        a.textContent = s.menu;
+        menu.appendChild(a);
+      }
+    });
+
+    // una sección que no esté en la lista no se muestra
+    ['servicios','plano','trabajos','clientes','nosotros','presupuesto'].forEach(function(id){
+      if (!vistas[id]) { var n = $(id); if (n) n.hidden = true; }
+    });
+  })();
 
   var wasapURL = function(mensaje){
     return 'https://wa.me/' + C.contacto.whatsapp +
@@ -252,7 +306,11 @@
     });
   }
   var luces = $('luces');
-  if (luces) P.luces.forEach(function(l){ luces.appendChild(el('li',null,l)); });
+  if (luces) (P.luces || []).forEach(function(l){ luces.appendChild(el('li',null,l)); });
+  ocultarSiVacio(document.querySelector('.luces'), P.luces);
+  ocultarSiVacio(listaSonido, P.sonido);
+  if (vacio(P.dibujo)) { var caja0 = $('planoCaja'); if (caja0) caja0.hidden = true; }
+  if (vacio(P.foto)) { var fig0 = document.querySelector('.equipos__foto'); if (fig0) fig0.hidden = true; }
 
   /* ---- Trabajos ---- */
   texto('trabajosTitulo', C.portafolio.titulo);
@@ -278,7 +336,9 @@
   var marcas = $('marcas');
   if (marcas) C.clientes.marcas.forEach(function(m){ marcas.appendChild(el('li',null,m)); });
   var colegios = $('colegios');
-  if (colegios) C.clientes.colegios.forEach(function(c){ colegios.appendChild(el('li',null,c)); });
+  if (colegios) (C.clientes.colegios || []).forEach(function(c){ colegios.appendChild(el('li',null,c)); });
+  ocultarSiVacio(marcas, C.clientes.marcas);
+  ocultarSiVacio(document.querySelector('.colegios'), C.clientes.colegios);
 
   /* ---- Nosotros ---- */
   texto('nosotrosTitulo', C.nosotros.titulo);
@@ -286,12 +346,13 @@
   if (nosotrosTexto) C.nosotros.parrafos.forEach(function(p){ nosotrosTexto.appendChild(el('p',null,p)); });
   var cifras = $('cifras');
   if (cifras) {
-    C.nosotros.cifras.forEach(function(c){
+    (C.nosotros.cifras || []).forEach(function(c){
       var d = el('div','cifra');
       d.appendChild(el('span','cifra__n', c.numero));
       d.appendChild(el('span','cifra__e', c.etiqueta));
       cifras.appendChild(d);
     });
+    ocultarSiVacio(cifras, C.nosotros.cifras);
   }
 
   /* ---- Contacto ---- */

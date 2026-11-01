@@ -1,9 +1,41 @@
 {
-  "logo": "/img/logo-blanco.png",
+  "logo": "img/logo-blanco.png",
   "descripcion": "Sonido, iluminación y estructura para eventos en Caracas.",
-  "derechos": "Blast",
+  "derechos": "Blast Prosound",
   "seo": {
-    "titulo": "Blast — Sonido, iluminación, tarimas y pantallas para eventos en Caracas",
-    "descripcion": "Producción de eventos en Caracas: sonido, iluminación, pantallas LED, tarimas, truss y render 3D. Bodas, fiestas, corporativos y graduaciones."
-  }
+    "titulo": "Blast Prosound — Sonido, luz y estructura para eventos en Caracas",
+    "descripcion": "Producción de eventos en Caracas: sonido JBL, iluminación, pantallas LED, tarimas, truss y render 3D. Bodas, fiestas, corporativos y graduaciones."
+  },
+  "secciones": [
+    {
+      "id": "servicios",
+      "menu": "Qué montamos",
+      "mostrar": true
+    },
+    {
+      "id": "plano",
+      "menu": "El plano",
+      "mostrar": true
+    },
+    {
+      "id": "trabajos",
+      "menu": "Trabajos",
+      "mostrar": true
+    },
+    {
+      "id": "clientes",
+      "menu": "",
+      "mostrar": true
+    },
+    {
+      "id": "nosotros",
+      "menu": "Nosotros",
+      "mostrar": true
+    },
+    {
+      "id": "presupuesto",
+      "menu": "Contacto",
+      "mostrar": true
+    }
+  ]
 }
